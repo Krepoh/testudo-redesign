@@ -6,6 +6,7 @@
   <!-- Keeps the prototype out of search results, so students looking for the real Testudo don't land here -->
   <meta name="robots" content="noindex">
   <title>Office of the Registrar – Testudo Redesign Prototype</title>
+  <script src="link-filter.js" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -68,11 +69,13 @@
     <section class="everything-else">
       <h2>Everything Else</h2>
 
-      <!-- Hidden until script.js runs, so every link is still listed if JavaScript doesn't load -->
+      <!-- Hidden until link-filter.js runs, so every link is still listed if JavaScript doesn't load -->
       <p class="everything-else-hint" hidden>Choose a category or search for an item.</p>
       <search class="link-search" hidden>
         <label for="link-search-input">Search all links</label>
-        <input type="search" id="link-search-input" placeholder="Search for a specific item.">
+        <!-- autocomplete="off" so the browser doesn't suggest an earlier participant's searches -->
+        <input type="search" id="link-search-input" placeholder="Search for a specific item." autocomplete="off">
+        <p class="search-status" role="status"></p>
       </search>
       <fieldset class="category-picker" hidden>
         <legend class="visually-hidden">Category</legend>
@@ -84,6 +87,11 @@
         <label><input type="radio" name="category" value="campus-life"> Campus Life</label>
         <label><input type="radio" name="category" value="admissions-reenrollment"> Admissions &amp; Reenrollment</label>
       </fieldset>
+
+      <div class="search-results" hidden>
+        <h3>Search results</h3>
+        <ul></ul>
+      </div>
 
       <div class="category" id="registration-terms">
         <h3>Registration &amp; Terms</h3>
