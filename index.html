@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Keeps the prototype out of search results, so students looking for the real Testudo don't land here -->
+  <meta name="robots" content="noindex">
+  <title>Office of the Registrar – Testudo Redesign Prototype</title>
+</head>
+<body>
+  <header class="site-header">
+    <p class="prototype-notice">Student redesign prototype for a usability study. Not an official UMD website.</p>
+    <p class="site-name">University of Maryland</p>
+    <a class="skip-link" href="#main">Skip to main content</a>
+  </header>
+
+  <main id="main">
+    <div class="page-intro">
+      <h1>Office <span class="title-connector">of the</span> Registrar</h1>
+      <p class="signed-in">Signed in as Sample Student</p>
+      <p class="announcement">Testudo’s hours of availability have been expanded. Testudo is available 24/7 except for daily maintenance from 5:45 a.m. to 6:30 a.m.</p>
+    </div>
+
+    <section class="registration-tasks">
+      <h2 class="visually-hidden">Registration</h2>
+      <ul class="task-cards">
+        <li class="task-card">
+          <p class="task-label">Register</p>
+          <h3><a href="destination.html?to=registration-drop-add">Registration (Drop/Add)</a></h3>
+          <p class="task-description">Edit your classes</p>
+        </li>
+        <li class="task-card">
+          <p class="task-label">Plan</p>
+          <h3><a href="destination.html?to=venus-schedule-builder">Venus - Schedule Builder</a></h3>
+          <p class="task-description">Map out your schedule</p>
+        </li>
+        <li class="task-card">
+          <p class="task-label">View</p>
+          <h3><a href="destination.html?to=student-schedule">Student Schedule</a></h3>
+          <p class="task-description">See your schedule laid out in blocks</p>
+        </li>
+        <li class="task-card">
+          <p class="task-label">Find</p>
+          <h3><a href="destination.html?to=schedule-of-classes">Schedule of Classes</a></h3>
+          <p class="task-description">Browse course codes and available sections</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="deadlines">
+      <h2>Dates &amp; Deadlines</h2>
+      <p class="sample-label">Sample data</p>
+      <p><a href="destination.html?to=full-calendar">Full Calendar</a></p>
+      <ul class="deadline-list">
+        <li><time datetime="2026-11-25">11/25</time> Thanksgiving break begins (no classes through 11/29)</li>
+        <li><time datetime="2026-12-10">12/10</time> Last day of classes for the fall semester</li>
+        <li><time datetime="2026-12-22">12/22</time> Final grades available for fall courses</li>
+      </ul>
+    </section>
+
+    <section class="holds">
+      <h2>Holds on Your Account</h2>
+      <p class="sample-label">Sample data</p>
+      <p>There are currently no holds on your account.</p>
+      <p><a href="destination.html?to=appointment-and-registration-status">Appointment and Registration Status</a></p>
+    </section>
+
+    <section class="everything-else">
+      <h2>Everything Else</h2>
+
+      <!-- Hidden until script.js runs, so every link is still listed if JavaScript doesn't load -->
+      <p class="everything-else-hint" hidden>Choose a category or search for an item.</p>
+      <search class="link-search" hidden>
+        <label for="link-search-input">Search all links</label>
+        <input type="search" id="link-search-input" placeholder="Search for a specific item.">
+      </search>
+      <fieldset class="category-picker" hidden>
+        <legend class="visually-hidden">Category</legend>
+        <label><input type="radio" name="category" value="registration-terms" checked> Registration &amp; Terms</label>
+        <label><input type="radio" name="category" value="records-documents"> Records &amp; Documents</label>
+        <label><input type="radio" name="category" value="grades-progress"> Grades &amp; Progress</label>
+        <label><input type="radio" name="category" value="account-access"> Account &amp; Access</label>
+        <label><input type="radio" name="category" value="billing-financial-aid"> Billing &amp; Financial Aid</label>
+        <label><input type="radio" name="category" value="campus-life"> Campus Life</label>
+        <label><input type="radio" name="category" value="admissions-reenrollment"> Admissions &amp; Reenrollment</label>
+      </fieldset>
+
+      <div class="category" id="registration-terms">
+        <h3>Registration &amp; Terms</h3>
+        <ul>
+          <li><a href="destination.html?to=academic-deadlines">Academic Deadlines</a></li>
+          <li><a href="destination.html?to=course-feedback-reports-and-submissions">Course Feedback Reports and Submissions</a></li>
+          <li><a href="destination.html?to=extended-studies">Extended Studies</a></li>
+          <li><a href="destination.html?to=final-exam-information">Final Exam Information</a></li>
+          <li><a href="destination.html?to=final-exams">Final Exams</a></li>
+          <li><a href="destination.html?to=summer-session">Summer Session</a></li>
+          <li><a href="destination.html?to=waitlist-check-in">Waitlist Check-In</a></li>
+          <li><a href="destination.html?to=winter-session">Winter Session</a></li>
+        </ul>
+      </div>
+
+      <div class="category" id="records-documents">
+        <h3>Records &amp; Documents</h3>
+        <ul>
+          <li><a href="destination.html?to=degree-verification-request">Degree Verification Request</a></li>
+          <li><a href="destination.html?to=diploma-remake-request">Diploma Remake Request</a></li>
+          <li><a href="destination.html?to=enrollment-certification-request">Enrollment Certification Request</a></li>
+          <li><a href="destination.html?to=institute-of-applied-agriculture-transcripts">Institute of Applied Agriculture Transcripts</a></li>
+          <li><a href="destination.html?to=notarization-of-documents-request">Notarization of Documents Request</a></li>
+          <li><a href="destination.html?to=transcript-ordering">Transcript Ordering</a></li>
+          <li><a href="destination.html?to=unofficial-transcript">Unofficial Transcript</a></li>
+        </ul>
+      </div>
+
+      <div class="category" id="grades-progress">
+        <h3>Grades &amp; Progress</h3>
+        <ul>
+          <li><a href="destination.html?to=degree-audit">Degree Audit</a></li>
+          <li><a href="destination.html?to=gpa-calculator">GPA Calculator</a></li>
+          <li><a href="destination.html?to=grades">Grades</a></li>
+          <li><a href="destination.html?to=graduation-application-and-diploma-status">Graduation Application &amp; Diploma Status</a></li>
+          <li><a href="destination.html?to=honor-pledge">Honor Pledge</a></li>
+          <li><a href="destination.html?to=transfer-credit">Transfer Credit</a></li>
+        </ul>
+      </div>
+
+      <div class="category" id="account-access">
+        <h3>Account &amp; Access</h3>
+        <ul>
+          <li><a href="destination.html?to=change-address-e-mail">Change Address / E-mail</a></li>
+          <li><a href="destination.html?to=deactivate-id-card">Deactivate ID Card</a></li>
+          <li><a href="destination.html?to=former-student-access">Former Student Access</a></li>
+          <li><a href="destination.html?to=grant-remove-parent-access">Grant/Remove Parent Access</a></li>
+          <li><a href="destination.html?to=parent-access">Parent Access</a></li>
+          <li><a href="destination.html?to=student-id-barcode">Student ID Barcode</a></li>
+        </ul>
+      </div>
+
+      <div class="category" id="billing-financial-aid">
+        <h3>Billing &amp; Financial Aid</h3>
+        <ul>
+          <li><a href="destination.html?to=billing">Billing</a></li>
+          <li><a href="destination.html?to=financial-aid">Financial Aid</a></li>
+          <li><a href="destination.html?to=student-financials">Student Financials</a></li>
+        </ul>
+      </div>
+
+      <div class="category" id="campus-life">
+        <h3>Campus Life</h3>
+        <ul>
+          <li><a href="destination.html?to=campus-map">Campus Map</a></li>
+          <li><a href="destination.html?to=counseling-center">Counseling Center</a></li>
+          <li><a href="destination.html?to=dining">Dining</a></li>
+          <li><a href="destination.html?to=health-center">Health Center</a></li>
+          <li><a href="destination.html?to=housing">Housing</a></li>
+          <li><a href="destination.html?to=register-to-vote">Register to Vote</a></li>
+          <li><a href="destination.html?to=transportation">Transportation</a></li>
+          <li><a href="destination.html?to=tutoring-services">Tutoring Services</a></li>
+        </ul>
+      </div>
+
+      <div class="category" id="admissions-reenrollment">
+        <h3>Admissions &amp; Reenrollment</h3>
+        <ul>
+          <li><a href="destination.html?to=grad-school">Grad School</a></li>
+          <li><a href="destination.html?to=reenrollment">Reenrollment</a></li>
+          <li><a href="destination.html?to=undergrad-admissions">Undergrad Admissions</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <h2>Contact Us</h2>
+      <address>
+        First Floor, Clarence M. Mitchell Building<br>
+        7999 Regents Drive, College Park, MD 20742<br>
+        Phone: 301-314-8240<br>
+        Fax: 301-314-9568<br>
+        <a href="destination.html?to=registrar-help-email">registrar-help@umd.edu</a>
+      </address>
+    </div>
+    <div>
+      <h2>Office Hours</h2>
+      <p>Monday to Friday<br>8:00 a.m. to 5:00 p.m.</p>
+    </div>
+    <div>
+      <h2>About</h2>
+      <ul>
+        <li><a href="destination.html?to=web-accessibility">Web Accessibility</a></li>
+        <li><a href="destination.html?to=privacy-and-ferpa">Privacy &amp; FERPA</a></li>
+        <li><a href="destination.html?to=a-z-index">A-Z Index</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>
