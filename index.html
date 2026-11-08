@@ -6,65 +6,75 @@
   <!-- Keeps the prototype out of search results, so students looking for the real Testudo don't land here -->
   <meta name="robots" content="noindex">
   <title>Office of the Registrar – Testudo Redesign Prototype</title>
+  <link rel="stylesheet" href="styles.css">
   <script src="link-filter.js" defer></script>
 </head>
 <body>
   <header class="site-header">
     <p class="prototype-notice">Student redesign prototype for a usability study. Not an official UMD website.</p>
-    <p class="site-name">University of Maryland</p>
-    <a class="skip-link" href="#main">Skip to main content</a>
+    <div class="header-bar">
+      <p class="site-name">University of Maryland</p>
+      <a class="skip-link" href="#main">Skip to main content</a>
+    </div>
   </header>
 
   <main id="main">
-    <div class="page-intro">
-      <h1>Office <span class="title-connector">of the</span> Registrar</h1>
-      <p class="signed-in">Signed in as Sample Student</p>
-      <p class="announcement">Testudo’s hours of availability have been expanded. Testudo is available 24/7 except for daily maintenance from 5:45 a.m. to 6:30 a.m.</p>
+    <div class="hero">
+      <div class="page-intro">
+        <h1>Office <span class="title-connector">of the</span> Registrar</h1>
+        <p class="signed-in">Signed in as Sample Student</p>
+        <p class="announcement"><strong>Testudo’s hours of availability have been expanded.</strong> Testudo is available 24/7 except for daily maintenance from 5:45 a.m. to 6:30 a.m.</p>
+      </div>
+
+      <!-- Seasonal shortcut: a real site would show this only in the weeks before finals -->
+      <div class="finals-reminder">
+        <p><strong>Finals are approaching!</strong> <span class="finals-date">Fall final exams begin <time datetime="2026-12-14">Monday, December 14</time>.</span></p>
+        <a href="destination.html?to=final-exams">Final Exams</a>
+      </div>
+
+      <section class="registration-tasks">
+        <h2 class="visually-hidden">Registration</h2>
+        <ul class="task-cards">
+          <li class="task-card featured-task">
+            <h3><a href="destination.html?to=registration-drop-add">Registration (Drop/Add)</a></h3>
+            <p class="task-description">Edit your classes</p>
+            <img src="images/register-icon.svg" alt="" width="133" height="133">
+          </li>
+          <li class="task-card">
+            <h3><a href="destination.html?to=venus-schedule-builder">Venus - Schedule Builder</a></h3>
+            <p class="task-description">Map out your schedule</p>
+          </li>
+          <li class="task-card">
+            <h3><a href="destination.html?to=student-schedule">Student Schedule</a></h3>
+            <p class="task-description">See your schedule laid out in blocks</p>
+          </li>
+          <li class="task-card">
+            <h3><a href="destination.html?to=schedule-of-classes">Schedule of Classes</a></h3>
+            <p class="task-description">Browse course codes and available sections</p>
+          </li>
+        </ul>
+      </section>
     </div>
 
-    <section class="registration-tasks">
-      <h2 class="visually-hidden">Registration</h2>
-      <ul class="task-cards">
-        <li class="task-card">
-          <p class="task-label">Register</p>
-          <h3><a href="destination.html?to=registration-drop-add">Registration (Drop/Add)</a></h3>
-          <p class="task-description">Edit your classes</p>
-        </li>
-        <li class="task-card">
-          <p class="task-label">Plan</p>
-          <h3><a href="destination.html?to=venus-schedule-builder">Venus - Schedule Builder</a></h3>
-          <p class="task-description">Map out your schedule</p>
-        </li>
-        <li class="task-card">
-          <p class="task-label">View</p>
-          <h3><a href="destination.html?to=student-schedule">Student Schedule</a></h3>
-          <p class="task-description">See your schedule laid out in blocks</p>
-        </li>
-        <li class="task-card">
-          <p class="task-label">Find</p>
-          <h3><a href="destination.html?to=schedule-of-classes">Schedule of Classes</a></h3>
-          <p class="task-description">Browse course codes and available sections</p>
-        </li>
-      </ul>
-    </section>
+    <div class="dates-and-holds">
+      <section class="deadlines">
+        <h2>Dates &amp; Deadlines</h2>
+        <p class="sample-label">Sample data</p>
+        <p class="calendar-link"><a href="destination.html?to=full-academic-calendar">Full Academic Calendar</a></p>
+        <ul class="deadline-list">
+          <li><time datetime="2026-11-25">Nov 25</time> Thanksgiving break begins (no classes through Nov 29)</li>
+          <li><time datetime="2026-12-11">Dec 11</time> Last day of classes for the fall semester</li>
+          <li><time datetime="2026-12-22">Dec 22</time> Final grades available for fall courses</li>
+        </ul>
+      </section>
 
-    <section class="deadlines">
-      <h2>Dates &amp; Deadlines</h2>
-      <p class="sample-label">Sample data</p>
-      <p><a href="destination.html?to=full-academic-calendar">Full Academic Calendar</a></p>
-      <ul class="deadline-list">
-        <li><time datetime="2026-11-25">Nov 25</time> Thanksgiving break begins (no classes through Nov 29)</li>
-        <li><time datetime="2026-12-10">Dec 10</time> Last day of classes for the fall semester</li>
-        <li><time datetime="2026-12-22">Dec 22</time> Final grades available for fall courses</li>
-      </ul>
-    </section>
-
-    <section class="holds">
-      <h2>Holds on Your Account</h2>
-      <p class="sample-label">Sample data</p>
-      <p>There are currently no holds on your account.</p>
-      <p><a href="destination.html?to=appointment-and-registration-status">Appointment and Registration Status</a></p>
-    </section>
+      <section class="holds">
+        <h2>Holds</h2>
+        <p class="sample-label">Sample data</p>
+        <p>There are currently no holds on your account.</p>
+        <p><a href="destination.html?to=appointment-and-registration-status">Appointment and Registration Status</a></p>
+      </section>
+    </div>
 
     <section class="everything-else">
       <h2>Everything Else</h2>
@@ -72,10 +82,11 @@
       <!-- Hidden until link-filter.js runs, so every link is still listed if JavaScript doesn't load -->
       <p class="everything-else-hint" hidden>Choose a category or search for an item.</p>
       <search class="link-search" hidden>
-        <label for="link-search-input">Search all links</label>
+        <!-- The label is hidden on screen but still names the box for screen readers. The hint inside the box uses the same words -->
+        <label class="visually-hidden" for="link-search-input">Search all links</label>
         <!-- autocomplete="off" so the browser doesn't suggest an earlier participant's searches -->
-        <input type="search" id="link-search-input" placeholder="Search for a specific item." autocomplete="off">
-        <p class="search-status" role="status"></p>
+        <input type="search" id="link-search-input" placeholder="Search all links" autocomplete="off">
+        <p class="search-status visually-hidden" role="status"></p>
       </search>
       <fieldset class="category-picker" hidden>
         <legend class="visually-hidden">Category</legend>
@@ -91,6 +102,7 @@
       <div class="search-results" hidden>
         <h3>Search results</h3>
         <ul></ul>
+        <p class="no-matches" hidden></p>
       </div>
 
       <div class="category" id="registration-terms">

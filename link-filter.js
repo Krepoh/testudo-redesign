@@ -2,6 +2,7 @@ const searchInput = document.querySelector('#link-search-input');
 const searchStatus = document.querySelector('.search-status');
 const searchResults = document.querySelector('.search-results');
 const resultsList = searchResults.querySelector('ul');
+const noMatches = searchResults.querySelector('.no-matches');
 const categoryPicker = document.querySelector('.category-picker');
 const categories = document.querySelectorAll('.category');
 
@@ -34,7 +35,13 @@ function showSearchResults(query, words) {
     item.append(link.cloneNode(true));
     return item;
   }));
-  searchResults.hidden = matches.length === 0;
+
+  const message = describeMatches(matches.length, query);
+  resultsList.hidden = matches.length === 0;
+  noMatches.hidden = matches.length > 0;
+  noMatches.textContent = message;
+  // The box stays open even with no matches, so the page doesn't jump around while someone types
+  searchResults.hidden = false;
 
   for (const category of categories) {
     category.hidden = true;
@@ -44,13 +51,13 @@ function showSearchResults(query, words) {
     radio.checked = false;
   }
 
-  announce(describeMatches(matches.length, query));
+  announce(message);
 }
 
 function describeMatches(count, query) {
-  if (count === 0) return `No links match “${query}”.`;
-  if (count === 1) return `1 link matches “${query}”.`;
-  return `${count} links match “${query}”.`;
+  if (count === 0) return `No matches for “${query}”.`;
+  if (count === 1) return `1 match for “${query}”.`;
+  return `${count} matches for “${query}”.`;
 }
 
 function announce(message) {
