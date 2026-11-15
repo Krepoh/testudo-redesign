@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Prototype link – Testudo Redesign Prototype</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="destination.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <p class="prototype-notice">Student redesign prototype for a usability study. Not an official UMD website.</p>
+    <div class="header-bar">
+      <p class="site-name">University of Maryland</p>
+      <a class="skip-link" href="#main">Skip to main content</a>
+    </div>
+  </header>
+
+  <main id="main" class="destination">
+    <!-- destination.js fills in which link was chosen. Without JavaScript, this general version still makes sense -->
+    <h1 class="destination-heading">You chose a link in the prototype</h1>
+    <p class="destination-explanation">This is the end of the prototype. On the real Testudo, this link would take you to another page or system.</p>
+
+    <section class="sample-deadlines" hidden>
+      <div class="sample-deadlines-heading">
+        <h2>Fall 2026 Academic Deadlines</h2>
+        <p class="sample-label">Sample data</p>
+      </div>
+      <table>
+        <caption class="visually-hidden">Sample fall 2026 deadlines and their dates</caption>
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Deadline</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><time datetime="2026-08-31">Aug 31</time></td><td>First day of classes</td></tr>
+          <tr><td><time datetime="2026-09-14">Sep 14</time></td><td>Last day to add a class</td></tr>
+          <tr><td><time datetime="2026-09-14">Sep 14</time></td><td>Last day to drop a class without a W</td></tr>
+          <tr><td><time datetime="2026-11-09">Nov 9</time></td><td>Last day to drop a class with a W</td></tr>
+          <tr><td><time datetime="2026-11-25">Nov 25–29</time></td><td>Thanksgiving break (no classes)</td></tr>
+          <tr><td><time datetime="2026-12-11">Dec 11</time></td><td>Last day of classes</td></tr>
+          <tr><td><time datetime="2026-12-14">Dec 14–21</time></td><td>Final exams</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <p><a class="back-link" href="index.html">Back to the prototype home page</a></p>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <h2>Contact Us</h2>
+      <address>
+        First Floor, Clarence M. Mitchell Building<br>
+        7999 Regents Drive, College Park, MD 20742<br>
+        Phone: 301-314-8240<br>
+        Fax: 301-314-9568<br>
+        <a href="destination.html?to=registrar-help-email">registrar-help@umd.edu</a>
+      </address>
+    </div>
+    <div>
+      <h2>Office Hours</h2>
+      <p>Monday to Friday<br>8:00 a.m. to 5:00 p.m.</p>
+    </div>
+    <div>
+      <h2>About</h2>
+      <ul>
+        <li><a href="destination.html?to=web-accessibility">Web Accessibility</a></li>
+        <li><a href="destination.html?to=privacy-and-ferpa">Privacy &amp; FERPA</a></li>
+        <li><a href="destination.html?to=a-z-index">A-Z Index</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>

@@ -60,7 +60,19 @@
   box-sizing: border-box;
 }
 
+/* Always shows the scrollbar track, even on short pages, so the layout doesn't shift sideways
+   when going from the long home page to a short destination page */
+html {
+  overflow-y: scroll;
+}
+
+/* The page is always at least as tall as the window, and main takes up the extra space,
+   so the footer stays at the bottom on short pages like destination.html */
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
   margin: 0;
   /* A terrapin-shell pattern, barely darker than the beige so it stays behind the content.
      The offset puts a hexagon's center in the middle of the screen, so both sides cut off evenly at any width */
@@ -70,6 +82,17 @@ body {
   line-height: 1.4;
   /* Lets a long word or email address break instead of making the page scroll sideways at high zoom */
   overflow-wrap: break-word;
+  /* Rewraps lines so a paragraph doesn't end with one word on its own line */
+  text-wrap: pretty;
+}
+
+main {
+  flex-grow: 1;
+}
+
+::selection {
+  background: var(--umd-yellow);
+  color: #000;
 }
 
 /* For people who turn on "Increase contrast" or a similar setting: no pattern, darker gray text, and stronger borders */
@@ -79,7 +102,8 @@ body {
     --outline: #767676;
   }
 
-  body {
+  body,
+  .hero {
     background-image: none;
   }
 }
@@ -99,6 +123,8 @@ strong {
 
 a {
   color: var(--text-red);
+  /* Moves the underline below letters like g and y, so it doesn't break around them */
+  text-underline-offset: 0.15em;
 }
 
 a:hover {
@@ -109,6 +135,37 @@ a:hover {
 :focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 3px;
+}
+
+/* Only for people who haven't asked their device to reduce motion. Hover colors fade in,
+   and buttons and cards shrink slightly while pressed so taps on phones get feedback too */
+@media (prefers-reduced-motion: no-preference) {
+  a,
+  .task-card,
+  .category-picker label {
+    transition: background-color 0.15s, border-color 0.15s, color 0.15s, transform 0.1s ease-out;
+  }
+
+  .skip-link:active,
+  .finals-reminder a:active,
+  .category-picker label:active,
+  .back-link:active {
+    transform: scale(0.97);
+  }
+
+  /* Big things need a smaller change to look the same */
+  .task-card:active {
+    transform: scale(0.99);
+  }
+}
+
+/* Makes white text on dark backgrounds look as thin on Macs as it does in the design */
+.site-header,
+.page-intro,
+.finals-reminder,
+.site-footer {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Hidden on screen but still read by screen readers */
@@ -177,7 +234,8 @@ a:hover {
   display: grid;
   gap: 2rem;
   padding: 4rem var(--page-gutter) 2.5rem;
-  background: var(--dark) center / cover;
+  /* The photo is already blurred and darkened, so white text stays at least 5:1 on its brightest spot */
+  background: var(--dark) url("images/banner.jpg") center / cover;
   color: #fff;
 }
 
@@ -273,8 +331,17 @@ a:hover {
   font-weight: 600;
 }
 
+.finals-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* When the buttons stack on phones, each fills the row so they match in width */
 .finals-reminder a {
-  padding: 0.75rem 2.875rem;
+  flex-grow: 1;
+  padding: 0.75rem 1.5rem;
+  text-align: center;
   border: 2px solid var(--outline-dark-1);
   border-radius: 8px;
   background: var(--dark);
@@ -556,7 +623,7 @@ a:hover {
   grid-column: 1;
   grid-row: 3;
   display: grid;
-  gap: 1.25rem;
+  gap: 0.75rem;
   min-width: 0;
   margin: 1rem 0 0;
   padding: 0;
@@ -683,6 +750,11 @@ a:hover {
     gap: 0.5rem;
   }
 
+  /* An odd last button fills the row, so it isn't left alone at half width */
+  .category-picker label:last-of-type:nth-of-type(odd) {
+    grid-column: 1 / -1;
+  }
+
   .category-picker:not([hidden]) ~ .category,
   .category-picker:not([hidden]) ~ .search-results {
     grid-column: 1;
@@ -741,5 +813,99 @@ a:hover {
 @media (max-width: 36em) {
   .site-footer {
     flex-direction: column;
+  }
+}
+
+/* Same side margins as the home page, so the text lines up with where the title was */
+.destination {
+  padding: 3rem var(--page-gutter) 4.25rem;
+}
+
+.destination > :last-child {
+  margin-bottom: 0;
+}
+
+.destination h1 {
+  margin: 0 0 1rem;
+  font-size: 2.5rem;
+}
+
+/* Same width as the deadlines table, so lines stay short enough to read easily */
+.destination-explanation {
+  max-width: 50rem;
+  margin: 0 0 2rem;
+  font-size: 1.125rem;
+}
+
+/* Kept narrower than the page, so each date stays close to its deadline */
+.sample-deadlines {
+  max-width: 50rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border: 1px solid var(--outline);
+  border-radius: 8px;
+  background: var(--off-white-2);
+}
+
+.sample-deadlines-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.sample-deadlines h2 {
+  margin: 0;
+}
+
+.sample-deadlines table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.sample-deadlines th {
+  padding: 0 0 0.5rem;
+  border-bottom: 2px solid var(--outline-dark-1);
+  font-weight: 600;
+  text-align: left;
+}
+
+.sample-deadlines td {
+  padding: 0.625rem 0;
+  border-top: 1px solid var(--outline);
+  vertical-align: top;
+}
+
+.sample-deadlines td:first-child {
+  width: 7rem;
+  padding-right: 1rem;
+  color: var(--text-red);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.back-link {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  background: var(--dark);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  background: var(--dark-gray);
+  color: #fff;
+}
+
+@media (max-width: 36em) {
+  .destination h1 {
+    font-size: 1.75rem;
+  }
+
+  .sample-deadlines {
+    padding: 1.25rem;
   }
 }

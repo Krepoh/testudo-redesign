@@ -6,8 +6,14 @@ const noMatches = searchResults.querySelector('.no-matches');
 const categoryPicker = document.querySelector('.category-picker');
 const categories = document.querySelectorAll('.category');
 
-// Collected before any search runs, so the copies shown in the results never get searched themselves
-const searchableLinks = [...document.querySelectorAll('main a, footer a')];
+// Collected before any search runs, so the copies shown in the results never get searched themselves.
+// Each destination is kept once, since the final exam links are in both the finals bar and their category
+const seenAddresses = new Set();
+const searchableLinks = [...document.querySelectorAll('main a, footer a')].filter((link) => {
+  if (seenAddresses.has(link.href)) return false;
+  seenAddresses.add(link.href);
+  return true;
+});
 
 let currentCategory = categoryPicker.querySelector(':checked').value;
 let statusTimer;
@@ -83,6 +89,14 @@ categoryPicker.addEventListener('change', (event) => {
   currentCategory = event.target.value;
   searchInput.value = '';
   showCurrentCategory();
+});
+
+// Buttons and cards don't leave a see-through copy behind when dragged.
+// Text links still drag normally, so people can drop them on the tab bar to open a new tab
+document.addEventListener('dragstart', (event) => {
+  if (event.target instanceof Element && event.target.matches('.task-card a, .finals-links a, .skip-link, .back-link, img')) {
+    event.preventDefault();
+  }
 });
 
 for (const control of document.querySelectorAll('.everything-else-hint, .link-search, .category-picker')) {
