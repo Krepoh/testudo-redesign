@@ -33,7 +33,8 @@ function showCurrentCategory() {
 function showSearchResults(query, words) {
   const matches = searchableLinks.filter((link) => {
     const name = link.textContent.toLowerCase();
-    return words.every((word) => name.includes(word));
+    // Also tries each word without a final "s", so "final exams" still finds Final Exam Schedule
+    return words.every((word) => name.includes(word) || (word.endsWith('s') && name.includes(word.slice(0, -1))));
   });
 
   resultsList.replaceChildren(...matches.map((link) => {
@@ -66,13 +67,15 @@ function describeMatches(count, query) {
   return `${count} matches for “${query}”.`;
 }
 
+// Timing borrowed from GOV.UK's accessible-autocomplete, which was tested with VoiceOver.
+// Emptying the status on every key and refilling it 1.4 seconds after typing stops means
+// VoiceOver finishes echoing the typed word and its own hints first, then reads the count as new text
 function announce(message) {
   clearTimeout(statusTimer);
-  // Waits a full second after typing stops. Screen readers don't read out a new count after every letter,
-  // and VoiceOver finishes repeating the last typed word first instead of cutting the count off
+  searchStatus.textContent = '';
   statusTimer = setTimeout(() => {
     searchStatus.textContent = message;
-  }, 1000);
+  }, 1400);
 }
 
 searchInput.addEventListener('input', () => {
