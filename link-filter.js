@@ -68,10 +68,11 @@ function describeMatches(count, query) {
 
 function announce(message) {
   clearTimeout(statusTimer);
-  // Waits for a pause in typing, so screen readers don't read out a new count after every letter
+  // Waits a full second after typing stops. Screen readers don't read out a new count after every letter,
+  // and VoiceOver finishes repeating the last typed word first instead of cutting the count off
   statusTimer = setTimeout(() => {
     searchStatus.textContent = message;
-  }, 500);
+  }, 1000);
 }
 
 searchInput.addEventListener('input', () => {
